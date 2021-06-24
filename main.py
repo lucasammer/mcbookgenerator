@@ -40,9 +40,12 @@ lines = textwrap.wrap(text, 19)
 i = 0
 fi = open("booktext.txt", "w")
 print("lines to print:", len(lines))
-pages = len(lines) / 14
-print("aproximated pages in total:", round(pages))
-colors.printc("\n\nWARNING: pagecount is an aproximation may be more or less in practice", colors.WARNING)
+paged = 0
+for line in range(len(lines)):
+  summ = line % 14
+  if summ == 0:
+    pages += 1
+colors.printc("pages to print: "+pages, colors.OKCYAN)
 ui.pause()
 for line in range(len(lines)):
     println = "generating line:", line + 1
